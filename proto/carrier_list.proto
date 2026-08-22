@@ -1,0 +1,23 @@
+edition = "2024";
+
+package com.android.carriersettings;
+
+message CarrierList {
+  repeated CarrierMap entry = 1;
+  int64 version = 2;
+}
+
+message CarrierMap {
+  string canonical_name = 1;
+  CarrierId carrier_id = 2;
+}
+
+message CarrierId {
+  string mcc_mnc = 1;
+  oneof mvno_data {
+    string spn = 2;
+    string imsi = 3;
+    string gid = 4;
+    string iccid = 6;
+  }
+}

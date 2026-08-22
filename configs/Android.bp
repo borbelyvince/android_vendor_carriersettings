@@ -1,0 +1,6 @@
+prebuilt_etc {
+    name: "prebuilt_carrier_settings",
+    product_specific: true,
+    relative_install_path: "CarrierSettings",
+    srcs: ["*.pb"],
+}

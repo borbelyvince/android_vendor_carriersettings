@@ -1,0 +1,11 @@
+java_library {
+    name: "carriersettings_proto",
+    proto: {
+        type: "lite",
+        include_dirs: ["external/protobuf/src"],
+    },
+    srcs: [
+        "*.proto",
+        ":libprotobuf-internal-protos",
+    ],
+}

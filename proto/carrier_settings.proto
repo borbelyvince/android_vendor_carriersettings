@@ -1,0 +1,44 @@
+edition = "2024";
+
+package com.android.carriersettings;
+
+import "google/protobuf/timestamp.proto";
+
+message CarrierSettings {
+  string canonical_name = 1;
+  int64 version = 2;
+  // CarrierApns apns = 3;
+  CarrierConfig configs = 4;
+  // VendorConfigs vendor_configs = 6;
+  google.protobuf.Timestamp last_update = 8;
+}
+
+message CarrierConfig {
+  message Config {
+    string key = 1;
+    oneof value {
+      string string_value = 2;
+      int32 integer_value = 3;
+      int64 long_value = 4;
+      bool boolean_value = 5;
+      TextArray string_array_value = 6;
+      IntArray integer_array_value = 7;
+      CarrierConfig bundle_value = 8;
+      double double_value = 9;
+    }
+  }
+  repeated Config config = 2;
+}
+
+message TextArray {
+  repeated string item = 1;
+}
+
+message IntArray {
+  repeated int32 item = 1;
+}
+
+message MultiCarrierSettings {
+  int64 version = 1;
+  repeated CarrierSettings setting = 2;
+}
